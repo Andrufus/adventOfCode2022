@@ -1,14 +1,12 @@
-import utils.FileUtils;
+package days;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 
-public class Day2 {
+public class Day2 extends Day<String[]> {
 
     // PART ONE DATA
     private static final Map<String, Integer> CHOICES_POINTS = Map.of(
@@ -73,24 +71,29 @@ public class Day2 {
             .orElseThrow();
     }
 
-    public static void main(String[] args) {
-        Supplier<Stream<String[]>> strategySupplier = () -> {
-            try {
-                return Files.lines(FileUtils.getInputAsPath(2))
-                    .map(line -> line.split(" "));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        };
+    @Override
+    Function<String, String[]> getMappingFunction() {
+        return line -> line.split(" ");
+    }
 
-        Integer totalScorePartOne = getTotalScore(strategySupplier,
-            round -> computeRoundScore(round[0], round[1]) + CHOICES_POINTS.get(round[1]));
+    @Override
+    Integer getDayNumber() {
+        return 2;
+    }
 
-        System.out.println("Total score part one : " + totalScorePartOne);
+    @Override
+    public String getResultPartOne() {
+        Integer totalScorePartOne = getTotalScore(inputSupplier,
+                round -> computeRoundScore(round[0], round[1]) + CHOICES_POINTS.get(round[1]));
 
-        Integer totalScorePartTwo = getTotalScore(strategySupplier,
-            round -> RESULT_POINTS.get(round[1]) + MY_CHOICES_POINTS.get(chooseShape(round[0], round[1])));
+        return "Total score part one : " + totalScorePartOne;
+    }
 
-        System.out.println("Total score part two : " + totalScorePartTwo);
+    @Override
+    public String getResultPartTwo() {
+        Integer totalScorePartTwo = getTotalScore(inputSupplier,
+                round -> RESULT_POINTS.get(round[1]) + MY_CHOICES_POINTS.get(chooseShape(round[0], round[1])));
+
+        return "Total score part two : " + totalScorePartTwo;
     }
 }

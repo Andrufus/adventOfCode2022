@@ -24,7 +24,6 @@ public class Day1 {
 
         System.out.println("Max : " + sums.stream().max(Integer::compareTo).orElseThrow());
 
-        sums.sort(Collections.reverseOrder());
-        System.out.println("Top 3 : " + sums.subList(0, 3).stream().reduce(Integer::sum).orElseThrow());
+        System.out.println("Top 3 : " + sums.stream().sorted(Collections.reverseOrder()).limit(3).reduce(Integer::sum).orElseThrow());
     }
 }

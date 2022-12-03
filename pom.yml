@@ -1,0 +1,15 @@
+modelVersion: 4.0.0
+
+groupId: org.example
+artifactId: aoc
+version: 1.0-SNAPSHOT
+
+properties:
+    maven.compiler.source: 17
+    maven.compiler.target: 17
+    project.build.sourceEncoding: UTF-8
+
+dependencies:
+    - groupId: com.google.inject
+      artifactId: guice
+      version: 5.1.0

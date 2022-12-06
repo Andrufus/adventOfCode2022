@@ -11,7 +11,8 @@ public class DaysModule extends AbstractModule {
         "day2", Day2.class,
         "day3", Day3.class,
         "day4", Day4.class,
-        "day5", Day5.class
+        "day5", Day5.class,
+        "day6", Day6.class
     );
 
     @Override

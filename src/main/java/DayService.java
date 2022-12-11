@@ -4,7 +4,7 @@ import days.Day;
 
 public record DayService(Day day) {
 
-    private static final String DAY_NUMBER = "day6";
+    private static final String DAY_NUMBER = "day11";
 
     @Inject
     public DayService(@Named(DAY_NUMBER) Day day) {
